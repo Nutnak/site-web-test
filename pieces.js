@@ -58,18 +58,34 @@ boutonFiltrer.addEventListener("click", function () {
 const boutonFiltreDescription = document.querySelector('.btn-filtrer-description');
 boutonFiltreDescription.addEventListener('click', function() {
   const piecesFiltreesDescription = pieces.filter(function (piece) {
-   if (piece.description == null) {
-
-   } else {
-    return piece.description;
-   }});
+      return piece.description;
+  });
   console.log(piecesFiltreesDescription);
 });
 
 const boutonPrixDecroissant = document.querySelector('.btn-filtrer-decroissant');
 boutonPrixDecroissant.addEventListener('click', function() {
-  const piecesPrixDecroissantes = pieces.sort(function (a, b) {
+  const piecesPrixDecroissantes = Array.from(pieces);
+  piecesPrixDecroissantes.sort(function (a, b) {
     return b.prix - a.prix;
   })
   console.log(piecesPrixDecroissantes);
-})
+});
+
+const noms = pieces.map(piece => piece.nom);
+for (let i = pieces.length - 1 ; i >= 0; i--) {
+  if (pieces[i].prix > 35) {
+    noms.splice(i,1)
+  }
+};
+console.log(noms);
+
+const abordablesElements = document.createElement('ul')
+for (let i = 0; i < noms.length; i++) {
+  const nomElement = document.createElement('li');
+  nomElement.innerText = noms[i];
+  abordablesElements.appendChild(nomElement)
+}
+
+document.querySelector('.abordables')
+.append(abordablesElements)
