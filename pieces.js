@@ -40,17 +40,36 @@ for (let i = 0; i < pieces.length; i++) {
 const boutonTrier = document.querySelector(".btn-trier")
 boutonTrier.addEventListener("click", function () {
   const piecesOrdonees = Array.from(pieces);
-  pieces.sort(function(a, b){
+  piecesOrdonees.sort(function(a, b){
     return a.prix - b.prix
   });
   console.log(piecesOrdonees);
 });
 
-const boutonFiltrer = document.querySelector(".btn-filtrer");
 
+const boutonFiltrer = document.querySelector(".btn-filtrer");
 boutonFiltrer.addEventListener("click", function () {
    const piecesFiltrees = pieces.filter(function (piece) {
        return piece.prix <= 35;
    });
    console.log(piecesFiltrees);
   });
+
+const boutonFiltreDescription = document.querySelector('.btn-filtrer-description');
+boutonFiltreDescription.addEventListener('click', function() {
+  const piecesFiltreesDescription = pieces.filter(function (piece) {
+   if (piece.description == null) {
+
+   } else {
+    return piece.description;
+   }});
+  console.log(piecesFiltreesDescription);
+});
+
+const boutonPrixDecroissant = document.querySelector('.btn-filtrer-decroissant');
+boutonPrixDecroissant.addEventListener('click', function() {
+  const piecesPrixDecroissantes = pieces.sort(function (a, b) {
+    return b.prix - a.prix;
+  })
+  console.log(piecesPrixDecroissantes);
+})
