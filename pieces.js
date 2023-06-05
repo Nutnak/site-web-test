@@ -110,3 +110,5 @@ for(let i=0 ; i < nomsDisponibles.length ; i++){
 }
 
 document.querySelector('.disponibles').appendChild(disponiblesElement);
+
+document.querySelector(".fiches").innerHTML = ""
